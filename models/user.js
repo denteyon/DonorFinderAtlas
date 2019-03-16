@@ -29,14 +29,14 @@ var UserSchema = new mongoose.Schema({
         enum: ['Available', 'Not available'],
         default: 'Available'
     },
-    lactitude: {
-        type: String,
+    latitude: {
+        type: Number,
         required: true
     },
     longitude: {
-        type: String,
+        type: Number,
         required: true
     }
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User', UserSchema, 'User');

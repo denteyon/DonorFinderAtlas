@@ -10,7 +10,7 @@
 
 </head>
 <body>
-  <div id="map" style="width: 100%; height: 800px; background: grey" />
+  <div id="map" style="width: 100%; height: 700px; background: grey" />
   <script  type="text/javascript" charset="UTF-8" >
     
 /**
@@ -18,15 +18,23 @@
  *
  * @param  {H.Map} map      A HERE Map instance within the application
  */
-function moveMapToBerlin(map){
+function moveMapToCurrentLocation(map){
     var latitude, longitude;
     navigator.geolocation.getCurrentPosition(function(location){
         latitude = location.coords.latitude;
         longitude = location.coords.longitude;
         map.setCenter({lat:latitude, lng:longitude});
         map.setZoom(14);
+        var svgMarkup = '<svg width="56" height="56" ' +
+        'xmlns="http://www.w3.org/2000/svg">' +
+        '<rect stroke="white" fill="#1b468d" x="1" y="1" width="54" ' +
+        'height="54" /><text x="12" y="18" font-size="12pt" ' +
+        'font-family="Arial" font-weight="bold" text-anchor="middle" ' +
+        'fill="white">C</text></svg>';
+        var icon = new H.map.Icon(svgMarkup)
+        var currentMarker = new H.map.Marker({lat:latitude, lng:longitude}, {icon, icon});
+        map.addObject(currentMarker);
     });
-  
 }
 
 /**
@@ -35,8 +43,8 @@ function moveMapToBerlin(map){
 
 //Step 1: initialize communication with the platform
 var platform = new H.service.Platform({
-  app_id: 'devportal-demo-20180625',
-  app_code: '9v2BkviRwi9Ot26kp2IysQ',
+  app_id: 'xgJpkwVEfD6Irqxucqy2',
+  app_code: 'TeJKeLplY0w4FE5zrDKzlA',
   useHTTPS: true
 });
 var pixelRatio = window.devicePixelRatio || 1;
@@ -58,7 +66,7 @@ var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 var ui = H.ui.UI.createDefault(map, defaultLayers);
 
 // Now use the map as required...
-moveMapToBerlin(map);
+moveMapToCurrentLocation(map);
   </script>
 </body>
 </html>

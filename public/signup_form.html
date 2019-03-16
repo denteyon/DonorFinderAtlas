@@ -9,7 +9,7 @@
 </head>
 <body>
 	<form action="/signup" method="POST" id="form">
-		Name: <input type="text" name="name"><br>
+		Name: <input type="text" name="name" required="required"><br>
 		Phone Number: <input type="tel" name="phone" required="required"><br>
 		Password: <input type="password" name="password" id="password" required="required"><br>
 		Password (retype for confirmation): <input type="password" id="confirm_password" required="required"><br>
@@ -22,6 +22,8 @@
 		B-<input type="radio" name="blood_type" value="B-"><br>
 		AB+<input type="radio" name="blood_type" value="AB+"><br>
 		AB-<input type="radio" name="blood_type" value="AB-"><br>
+		Latitude: <input type="number" name="latitude" step="0.000001"><br>
+		Longitude <input type="number" name="longitude" step="0.000001"><br>
 		<input type="submit" value="submit">
 	</form>
 	<script>

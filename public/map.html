@@ -23,9 +23,10 @@ function moveMapToBerlin(map){
     navigator.geolocation.getCurrentPosition(function(location){
         latitude = location.coords.latitude;
         longitude = location.coords.longitude;
+        map.setCenter({lat:latitude, lng:longitude});
+        map.setZoom(14);
     });
-  map.setCenter({lat:latitude, lng:longitude});
-  map.setZoom(14);
+  
 }
 
 /**

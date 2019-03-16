@@ -7,10 +7,12 @@ const compression = require('compression');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
 
-const publicPath = path.join(__dirname+'public');
+const publicPath = path.join(__dirname,'public');
 
 var app = express();
 const port = 3000;
+
+const router = require('/router/router');
 
 // Set up mongoose connection
 var mongoose = require('mongoose');
@@ -32,10 +34,12 @@ app.use(cookieParser());
 
 app.use(express.static(publicPath));
 
-app.get('/', (req, res)=>{
-    res.send('Hello');
-})
+app.use('/', router);
+
+// app.get('/', (req, res)=>{
+//     res.send('Hello');
+// });
 
 app.listen(port, () => {
-    console.log('server is up and running');
+    console.log(`server is up and running at ${port}`);
 });

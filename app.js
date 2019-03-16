@@ -12,10 +12,9 @@ const publicPath = path.join(__dirname,'public');
 var app = express();
 const port = 3000;
 
-const router = require('/router/router');
+const router = require('./router/router');
 
 // Set up mongoose connection
-var mongoose = require('mongoose');
 var dev_db_url = '<mongoatlas>';
 var mongoDB = process.env.MONGODB_URI || dev_db_url;
 mongoose.connect(mongoDB, { useNewUrlParser: true });
@@ -34,7 +33,8 @@ app.use(cookieParser());
 
 app.use(express.static(publicPath));
 
-app.use('/', router);
+app.use('/', router.router);
+
 
 // app.get('/', (req, res)=>{
 //     res.send('Hello');

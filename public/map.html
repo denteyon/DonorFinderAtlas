@@ -18,12 +18,15 @@
  *
  * @param  {H.Map} map      A HERE Map instance within the application
  */
+ var currentLatitude, currentLongitude;
+
+
 function moveMapToCurrentLocation(map){
-    var latitude, longitude;
+    
     navigator.geolocation.getCurrentPosition(function(location){
-        latitude = location.coords.latitude;
-        longitude = location.coords.longitude;
-        map.setCenter({lat:latitude, lng:longitude});
+        currentLatitude = location.coords.latitude;
+        currentLongitude = location.coords.longitude;
+        map.setCenter({lat:currentLatitude, lng:currentLongitude});
         map.setZoom(14);
         var svgMarkup = '<svg width="56" height="56" ' +
         'xmlns="http://www.w3.org/2000/svg">' +
@@ -31,10 +34,62 @@ function moveMapToCurrentLocation(map){
         'height="54" /><text x="12" y="18" font-size="12pt" ' +
         'font-family="Arial" font-weight="bold" text-anchor="middle" ' +
         'fill="white">C</text></svg>';
-        var icon = new H.map.Icon(svgMarkup)
-        var currentMarker = new H.map.Marker({lat:latitude, lng:longitude}, {icon, icon});
+        var icon = new H.map.Icon(svgMarkup);
+        var currentMarker = new H.map.Marker({lat:currentLatitude, lng:currentLongitude}, {icon, icon});
         map.addObject(currentMarker);
+        currentMarker.addEventListener('tap', function (evt) {
+    // event target is the marker itself, group is a parent event target
+    // for all objects that it contains
+    var bubble =  new H.ui.InfoBubble(evt.target.getPosition(), {
+      // read custom data
+      content: evt.target.getData()
     });
+    // show info bubble
+    ui.addBubble(bubble);
+  }, false);
+  currentMarker.setData('<div >Your Current Location' +
+    '</div>');
+        addInfoBubble(map);
+    });
+}
+
+function addMarkerToGroup(group, coordinate, html) {
+  var marker = new H.map.Marker(coordinate);
+  // add custom data to the marker
+  marker.setData(html);
+  group.addObject(marker);
+}
+
+function addInfoBubble(map) {
+
+  var group = new H.map.Group();
+
+  map.addObject(group);
+
+  // add 'tap' event listener, that opens info bubble, to the group
+  group.addEventListener('tap', function (evt) {
+    // event target is the marker itself, group is a parent event target
+    // for all objects that it contains
+    var bubble =  new H.ui.InfoBubble(evt.target.getPosition(), {
+      // read custom data
+      content: evt.target.getData()
+    });
+    // show info bubble
+    ui.addBubble(bubble);
+  }, false);
+
+  // addMarkerToGroup(group, {lat:currentLatitude, lng:currentLongitude},
+  //   '<div ><a href=\'http://www.liverpoolfc.tv\' >Liverpool</a>' +
+  //   '</div><div >Anfield<br>Capacity: 45,362</div>');
+
+  addMarkerToGroup(group, {lat:53.439, lng:-2.221},
+    '<div>Your Current Location' +
+    '</div>');
+
+  addMarkerToGroup(group, {lat:53.430, lng:-2.961},
+    '<div ><a href=\'http://www.liverpoolfc.tv\' >Liverpool</a>' +
+    '</div><div >Anfield<br>Capacity: 45,362</div>');
+
 }
 
 /**

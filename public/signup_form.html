@@ -12,10 +12,10 @@
 <body>
 	<div class="container">
 		<form action="/signup" method="POST" id="form">
-			Name: <input type="text" name="name" required="required"><br>
-			Phone Number: <input type="tel" name="phone" required="required"><br>
-			Password: <input type="password" name="password" id="password" required="required"><br>
-			Password (retype for confirmation): <input type="password" id="confirm_password" required="required"><br>
+			<label for="name">Name: </label> <br><input id="name" type="text" name="name" required="required"><br>
+			<label for="phone">Phone Number: </label> <br><input id="phone" type="tel" name="phone" required="required"><br>
+			<label for="password">Password: </label> <br><input type="password" name="password" id="password" required="required"><br>
+			<label for="confirm_password">Password (retype for confirmation): </label> <br><input type="password" id="confirm_password" required="required"><br>
 			Blood Type:<br>
 			O+<input type="radio" name="blood_type" value="O+" checked><br>
 			O-<input type="radio" name="blood_type" value="O-"><br>
@@ -25,7 +25,7 @@
 			B-<input type="radio" name="blood_type" value="B-"><br>
 			AB+<input type="radio" name="blood_type" value="AB+"><br>
 			AB-<input type="radio" name="blood_type" value="AB-"><br>
-			Address: <input type="text" name="address" required="required"><br>
+			<label for="address">Address: </label> <br><input id="address" type="text" name="address" required="required"><br>
 			<button type="submit">Submit</button>
 			<button onclick="window.location.href = 'http://localhost:3000/';">Home</button><br>
 		</form>

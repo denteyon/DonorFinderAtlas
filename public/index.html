@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>Blood Donor Finder</h1>
-    <form action="" method="post">
+    <form action="/map.html" method="get">
         <label for="bloodType">Blood Type</label>
         <select id="bloodType" name="bloodType">
             <option value="A-">A-</option>
@@ -20,9 +20,8 @@
             <option value="AB-">AB-</option>
             <option value="AB+">AB+</option>
         </select><br>
-        <label for="location">Location</label>
-        <textarea id="location"></textarea><br>
-        <button type="submit">Submit</button>
+        <button type="submit">Find</button>
     </form>
+    <button onclick="window.location.href = 'http://localhost:3000/signup_form.html';">Sign Up</button>
 </body>
 </html>

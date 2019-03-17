@@ -19,6 +19,7 @@ module.exports.router.post("/signup", bodyParser.urlencoded({ extended: false })
 			const user = new User({
 				name: req.body.name,
 				password: req.body.password,
+				phone: req.body.phone,
 				bloodType: req.body.blood_type,
 				latitude: latitude,
 				longitude: longitude,

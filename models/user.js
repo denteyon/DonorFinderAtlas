@@ -17,7 +17,11 @@ var UserSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
-    },
+	},
+	phone: {
+		type: String,
+		required: true
+	},
     bloodType: {
         type: String,
         required: true,

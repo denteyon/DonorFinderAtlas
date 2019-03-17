@@ -118,7 +118,7 @@ function addInfoBubble(map) {
   //   '</div><div >Anfield<br>Capacity: 45,362</div>');
   fetch(`/donors/${bloodType}`).then(blob => blob.json()).then(donors => {
     donors.forEach(donor => {
-      addMarkerToGroup(group, {lat: donor.latitude, lng: donor.longitude}, `<div>${donor.name}</div><div>${donor.phone}</div><div>${donor.bloodType}</div><div>${donor.status}</div>`)
+      addMarkerToGroup(group, {lat: donor.latitude, lng: donor.longitude}, `<div>${donor.name}</div><div>Phone Number: ${donor.phone}</div><div>${donor.bloodType}</div><div>${donor.status}</div>`)
     });
   });
 

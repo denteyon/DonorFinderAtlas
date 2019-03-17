@@ -7,6 +7,8 @@ body {
 	line-height: 1.5;
 	font-family: 'Roboto', sans-serif;
 	background-size: cover;
+	background-position: center;
+	background-repeat:no-repeat;
 }
 img{
 	width: 200px;

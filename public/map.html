@@ -17,7 +17,9 @@
  * Moves the map to display over Berlin
  *
  * @param  {H.Map} map      A HERE Map instance within the application
+ * 
  */
+
  var currentLatitude, currentLongitude;
 
 
@@ -81,9 +83,14 @@ function addInfoBubble(map) {
   // addMarkerToGroup(group, {lat:currentLatitude, lng:currentLongitude},
   //   '<div ><a href=\'http://www.liverpoolfc.tv\' >Liverpool</a>' +
   //   '</div><div >Anfield<br>Capacity: 45,362</div>');
+  fetch('/donors/O+').then(blob => blob.json()).then(donors => {
+    donors.forEach(donor => {
+      addMarkerToGroup(group, {lat: donor.latitude, lng: donor.longitude}, `<div>${donor.name}</div><div>${donor.bloodType}</div><div>${donor.status}</div>`)
+    });
+  });
 
   addMarkerToGroup(group, {lat:53.439, lng:-2.221},
-    '<div>Your Current Location' +
+    '<div>jysgfiua' +
     '</div>');
 
   addMarkerToGroup(group, {lat:53.430, lng:-2.961},

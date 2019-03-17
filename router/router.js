@@ -72,6 +72,9 @@ module.exports.router.get("/donors/:blood_type", (req, res) => {
 	}
 
 	User.find({ bloodType: { $in: donorTypes } }).then(docs => {
-		res.send(JSON.stringify(docs));
-	});
+
+        res.send(JSON.stringify(docs));
+	}).catch(e => {
+        console.log(e);
+    }) 
 });

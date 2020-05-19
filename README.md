@@ -1,7 +1,5 @@
 # blood-donor-finder
 A map-based website to find blood donors
-- [ ] Add login page+update/delete function
-- [ ] validation
-- [ ] encryption
-- [ ] better error handling
-- [ ] cleaning code
+
+| ![Main](https://github.com/Denteyon/messenger-location-chat/blob/master/assets/gallery.jpg?raw=true)  | ![Register](https://github.com/Denteyon/messenger-location-chat/blob/master/assets/gallery.jpg?raw=true)| ![Map](https://github.com/Denteyon/messenger-location-chat/blob/master/assets/gallery.jpg?raw=true) |
+|:---:|:---:|:---:|
